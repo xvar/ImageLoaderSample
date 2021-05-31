@@ -1,6 +1,6 @@
 package com.allgoritm.youla.image_loader.impl
 
-internal sealed class Transformation {
+sealed class Transformation {
 
     class Circle(
         val stroke: Stroke? = null

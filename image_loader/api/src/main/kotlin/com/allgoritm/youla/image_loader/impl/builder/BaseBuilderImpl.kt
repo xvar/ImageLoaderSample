@@ -12,7 +12,7 @@ import com.allgoritm.youla.image_loader.impl.Resize
 import com.allgoritm.youla.image_loader.impl.Stroke
 import com.allgoritm.youla.image_loader.impl.Transformation
 
-internal open class BaseBuilderImpl : BaseBuilder {
+open class BaseBuilderImpl : BaseBuilder {
 
     var error: Error? = null
     var memoryPolicy: MemoryPolicy? = null

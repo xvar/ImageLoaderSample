@@ -5,7 +5,7 @@ import androidx.annotation.DrawableRes
 import com.allgoritm.youla.image_loader.api.builder.ImageViewBuilder
 import com.allgoritm.youla.image_loader.impl.Placeholder
 
-internal open class ImageViewBuilderImpl : BaseBuilderImpl(), ImageViewBuilder {
+open class ImageViewBuilderImpl : BaseBuilderImpl(), ImageViewBuilder {
 
     var centerCrop = false
     var centerInside = false

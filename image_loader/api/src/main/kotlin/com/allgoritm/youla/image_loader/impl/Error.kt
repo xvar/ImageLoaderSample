@@ -3,14 +3,14 @@ package com.allgoritm.youla.image_loader.impl
 import androidx.annotation.DrawableRes
 import android.graphics.drawable.Drawable as AndroidDrawable
 
-internal sealed class Placeholder {
+sealed class Error {
 
     class Drawable(
         val drawable: AndroidDrawable
-    ) : Placeholder()
+    ) : Error()
 
     class Resource(
         @DrawableRes val drawableId: Int
-    ) : Placeholder()
+    ) : Error()
 
 }
