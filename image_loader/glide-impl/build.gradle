@@ -1,0 +1,13 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply from : '../../dependencies.gradle'
+
+dependencies {
+    implementation(libs.androidx.annotation)
+    implementation(libs.androidx.core_ktx)
+    implementation(libs.javax.inject)
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+
+    implementation project(":image_loader:api")
+}

@@ -9,4 +9,6 @@ dependencyResolutionManagement {
 rootProject.name = "My Application"
 include ':app'
 include ':image_loader:api'
-include ':image_loader:impl'
+include ':image_loader:picasso-impl'
+include ':image_loader:glide-impl'
+include ':image_loader:coil-impl'
