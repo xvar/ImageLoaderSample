@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ImageLoaderAdapter Sample</string>
+    <string name="title_activity_login_sample">Sample Activity</string>
+</resources>

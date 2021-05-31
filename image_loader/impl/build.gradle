@@ -1,0 +1,12 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply from : '../../dependencies.gradle'
+
+dependencies {
+    implementation(libs.androidx.annotation) 
+    implementation(libs.androidx.core_ktx)
+    implementation(libs.javax.inject)
+    implementation(libs.picasso.picasso)
+
+    implementation project(":image_loader:api")
+}

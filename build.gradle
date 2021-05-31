@@ -1,0 +1,94 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from: 'dependencies.gradle'
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots' }
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.0.0-beta03"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.10"
+        classpath "io.github.cdsap:talaiot:1.5.1-SNAPSHOT"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+subprojects {
+    afterEvaluate { project ->
+        //android libraries
+        if (project.hasProperty('android')) {
+            android {
+                sourceSets.all {
+                    java.srcDir("src/$name/kotlin")
+                }
+                compileSdkVersion config.compileSdk
+
+                signingConfigs {
+                    ydb {
+                        keyAlias 'androiddebugkey'
+                        keyPassword 'android'
+                        storeFile file('source/debug.keystore')
+                        storePassword 'android'
+                    }
+                }
+
+                defaultConfig {
+                    minSdkVersion config.minSdk
+                    targetSdkVersion config.targetSdk
+                    versionCode config.versionCode
+                    versionName config.versionName
+                    signingConfig signingConfigs.ydb
+                    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+                    resValue "string", "applicationLabel", config.projectName
+
+                    javaCompileOptions {
+                        annotationProcessorOptions {
+                            arguments += ["room.schemaLocation": "$projectDir/room_schemas".toString()]
+                        }
+                    }
+                }
+
+                buildTypes {
+                    release {
+                        minifyEnabled true
+                        proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+                    }
+                    debug {
+                        debuggable true
+                    }
+                }
+
+                buildFeatures {
+                    viewBinding true
+                }
+
+                compileOptions {
+                    sourceCompatibility config.java
+                    targetCompatibility config.java
+                }
+
+                kotlinOptions {
+                    jvmTarget = config.jvmTarget
+                    useIR = true
+                }
+            }
+        }
+
+        //kotlin/java libraries
+        if (project.plugins.hasPlugin('java-library')) {
+            java {
+                sourceCompatibility = config.java
+                targetCompatibility = config.java
+            }
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
