@@ -4,6 +4,16 @@ plugins {
     id 'io.github.cdsap.talaiot'
 }
 
+talaiot {
+    publishers {
+        taskDependencyGraphPublisher {
+            gexf = true
+            dot = true
+            html = true
+        }
+    }
+}
+
 dependencies {
     implementation project(":image_loader:api")
     implementation project(':image_loader:picasso-impl')
@@ -11,6 +21,7 @@ dependencies {
     implementation project(':image_loader:coil-impl')
     implementation(libs.picasso.picasso)
     implementation(libs.glide.glide)
+    implementation(libs.coil.coil)
 
     implementation 'androidx.core:core-ktx:1.5.0'
     implementation 'androidx.appcompat:appcompat:1.3.0'

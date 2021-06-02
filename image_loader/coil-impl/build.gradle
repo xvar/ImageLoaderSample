@@ -6,7 +6,7 @@ dependencies {
     implementation(libs.androidx.annotation)
     implementation(libs.androidx.core_ktx)
     implementation(libs.javax.inject)
-    implementation("io.coil-kt:coil:1.2.1")
+    implementation(libs.coil.coil)
 
     implementation project(":image_loader:api")
 }

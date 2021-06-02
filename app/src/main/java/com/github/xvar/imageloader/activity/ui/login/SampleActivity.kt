@@ -5,7 +5,9 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import coil.imageLoader
 import com.allgoritm.youla.image_loader.api.ImageLoader
+import com.allgoritm.youla.image_loader.coil_impl.CoilImageLoaderImpl
 import com.allgoritm.youla.image_loader.glide_impl.GlideImageLoaderImpl
 import com.allgoritm.youla.image_loader.impl.ImageLoaderImpl
 import com.bumptech.glide.Glide
@@ -21,8 +23,10 @@ class SampleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        imLoader = ImageLoaderImpl(Picasso.with(this.applicationContext))
+        //imLoader = ImageLoaderImpl(Picasso.with(this.applicationContext))
         //imLoader = GlideImageLoaderImpl(Glide.get(this.applicationContext))
+        imLoader = CoilImageLoaderImpl(this.applicationContext.imageLoader)
+
 
         binding = SampleActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
