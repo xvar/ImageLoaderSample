@@ -7,10 +7,10 @@ plugins {
 talaiot {
     publishers {
         taskDependencyGraphPublisher {
-            gexf = true
-            dot = true
             html = true
         }
+        timelinePublisher = true
+        jsonPublisher = true
     }
 }
 
